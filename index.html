@@ -14,7 +14,20 @@
 <script type="text/javascript" src="js/index.js"></script>
 <script src="phonegap.js"></script>
     
-    
+<script type="text/javascript">
+    function playAudio(id) {
+        var audioElement = document.getElementById(id);
+        var url = audioElement.getAttribute('src');
+        var my_media = new Media('/android_asset/www/' + url,
+        // success callback
+         function () { console.log("playAudio():Audio Success"); },
+        // error callback
+         function (err) { console.log("playAudio():Audio Error: " + err); }
+);
+       // Play audio
+my_media.play();
+    }
+</script>
 
 </head>
 <body>
@@ -59,10 +72,6 @@
           <ul data-role="listview" class="ui-listview">
             <li class="ui-first-child">
               <h3>Turkey Cackle</h3>
-                <a href="#" class="btn large" onclick="playAudio('sounds/turkey/TurkeyCackle.mp3');">Play Audio</a>
-                <a href="#" class="btn large" onclick="pauseAudio();">Pause Playing Audio</a>
-                <a href="#" class="btn large" onclick="stopAudio();">Stop Playing Audio</a>
-                <p id="audio_position"></p>
                 <audio id="successSound" src="sounds/turkey/TurkeyCackle.mp3" type="audio/mpeg" ></audio>
                 <button onclick="playAudio('successSound')">Play successSound local</button>
             </li>
