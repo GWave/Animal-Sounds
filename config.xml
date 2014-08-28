@@ -3,7 +3,8 @@
         xmlns:gap   = "http://phonegap.com/ns/1.0"
         id          = "com.websitedesignsflorida.animalcalls"
         version     = "1.0.0" >
-
+        
+        <gap:plugin name="org.apache.cordova.media" />
     <!-- versionCode is optional and Android only -->
 
     <name>PhoneGap Example</name>

@@ -13,6 +13,7 @@
 <script type="text/javascript" src="js/CocoonJS.js"></script>
 <script type="text/javascript" src="js/CocoonJS_Ad.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
+<script type="text/javascript" src="js/index.js"></script>
 
 </head>
 <body>
@@ -57,11 +58,8 @@
           <ul data-role="listview" class="ui-listview">
             <li class="ui-first-child">
               <h3>Turkey Cackle</h3>
-                <audio controls>
-                
-                <source src="sounds/turkey/Turkey_Cackle.ogg" type="audio/ogg">    
-                Your device does not support the audio element.
-                </audio>
+                <audio id="successSound" src="sounds/turkey/TurkeyCackle.mp3" type="audio/mpeg" ></audio>
+                <button onclick="playAudio('successSound')">Play successSound local</button>
             </li>
             <li>
               <h3>Turkey Cluck</h3>
