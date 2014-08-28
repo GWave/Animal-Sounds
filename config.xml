@@ -4,7 +4,6 @@
         id          = "com.websitedesignsflorida.animalcalls"
         version     = "1.0.0" >
         
-        <gap:plugin name="org.apache.cordova.media" />
     <!-- versionCode is optional and Android only -->
 
     <name>PhoneGap Example</name>
@@ -20,5 +19,7 @@
     <feature name="Media">
         <param name="android-package" value="org.apache.cordova.media.AudioHandler" />
     </feature>
+        
+    <gap:plugin name="org.apache.cordova.media" version="0.2.8" />
 
 </widget>
