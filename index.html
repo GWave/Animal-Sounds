@@ -13,21 +13,6 @@
 <script type="text/javascript" src="js/scripts.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
 <script src="phonegap.js"></script>
-    
-<script type="text/javascript">
-    function playAudio(id) {
-        var audioElement = document.getElementById(id);
-        var url = audioElement.getAttribute('src');
-        var my_media = new Media('/android_asset/www/' + url,
-        // success callback
-         function () { console.log("playAudio():Audio Success"); },
-        // error callback
-         function (err) { console.log("playAudio():Audio Error: " + err); }
-);
-       // Play audio
-my_media.play();
-    }
-</script>
 
 </head>
 <body>
@@ -72,8 +57,8 @@ my_media.play();
           <ul data-role="listview" class="ui-listview">
             <li class="ui-first-child">
               <h3>Turkey Cackle</h3>
-                <audio id="successSound" src="sounds/turkey/TurkeyCackle.mp3" type="audio/mpeg" ></audio>
-                <button onclick="playAudio('successSound')">Play successSound local</button>
+                <button onclick="playAudio()">Turkey Cackle</button>
+                <button onclick="stopAudio()">Stop</button>
             </li>
             <li>
               <h3>Turkey Cluck</h3>
