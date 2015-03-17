@@ -13,14 +13,21 @@ $(document).ready(function(){
 	});
 
 	// Media Player
-	myMedia = new Media("android_asset/www/sounds/turkey/TurkeyCackle.mp3");
+	//myMedia = new Media("android_asset/www/sounds/turkey/TurkeyCackle.mp3");
+
+	ion.sound({
+	    sounds: [
+	        {
+	            name: "TurkeyCackle"
+	        }
+	    ],
+	    volume: 1,
+	    path: "android_asset/www/sounds/turkey/",
+	    preload: true
+	});
 
 	function playAudio() {
-		myMedia.play();
-	}
-
-	function stopAudio() {
-		myMedia.stop();
+		ion.sound.play("TurkeyCackle");
 	}
 
 });// End Doc Ready
