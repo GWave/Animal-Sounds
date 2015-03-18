@@ -12,11 +12,47 @@
 <script type="text/javascript" src="js/jquery.mobile-1.4.3.min.js"></script>
 <script type="text/javascript" src="js/scripts.js"></script>
 <script type="text/javascript" src="js/index.js"></script>
-<script type="text/javascript" src="js/ion.sound.min.js"></script>
 <script src="phonegap.js"></script>
-
+  <script> 
+        var myAudioContext, myBuffers = {}, mySource; 
+        function init() { 
+            if ('webkitAudioContext' in window) { 
+                myAudioContext = new webkitAudioContext(); 
+                fetchSounds(); 
+            } 
+        } 
+        function fetchSounds() { 
+            var request = new XMLHttpRequest(); 
+            request = new XMLHttpRequest(); 
+            request.open('GET', 'sounds/TurkeyCackle.mp3', true); 
+            request.responseType = 'arraybuffer'; 
+            request.addEventListener('load', bufferSound, false); 
+            request.send(); 
+        } 
+        function bufferSound(event) { 
+            var request = event.target; 
+            var buffer = myAudioContext.createBuffer(request.response, false); 
+            myBuffers['TurkeyCackle'] = buffer; 
+        } 
+        function playSound() { 
+            var source = myAudioContext.createBufferSource(); 
+            source.buffer = myBuffers['TurkeyCackle']; 
+            source.loop = false; 
+            source.connect(myAudioContext.destination); 
+            source.noteOn(0); 
+            mySource = source; 
+        } 
+        function play() { 
+            if ('webkitAudioContext' in window) { 
+                playSound(); 
+            } else { 
+                var snd = document.getElementById('audio'); 
+                snd.play(); 
+            } 
+        }; 
+    </script> 
 </head>
-<body>
+<body onload="init()">
 <!-- Main Page -->
 <div data-role="page" id="page1" data-theme="b" data-add-back-btn="true">
   <div data-role="header" data-position="fixed">
@@ -58,7 +94,14 @@
           <ul data-role="listview" class="ui-listview">
             <li class="ui-first-child">
               <h3>Turkey Cackle</h3>
-                <button onclick="playAudio()">Turkey Cackle</button>
+                <audio id="audio" name="audio" > 
+                <source src="sounds/TurkeyCackle.ogg" type="audio/ogg"> 
+                <source src="sounds/TurkeyCackle.wav" type="audio/wave"> 
+                <source src="sounds/TurkeyCackle.mp3" type="audio/mpeg"> 
+                <source src="sounds/TurkeyCackle.m4a" type="audio/mpeg"> 
+                Your browser does not support the audio element. 
+                </audio> 
+                <input id="play" onclick="play()" type="button" value="Turkey Cackle"/> 
             </li>
             <!--<li>
               <h3>Turkey Cluck</h3>
